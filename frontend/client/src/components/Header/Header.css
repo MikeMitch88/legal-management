@@ -1,0 +1,16 @@
+.header{
+    color: black;
+    text-align: center;
+    margin-top: 0;
+
+    
+}
+.header .footer{
+    text-align: center;
+    bottom: 10px;
+    position: fixed;
+    left: 500px;
+    
+    
+
+}
