@@ -1,0 +1,44 @@
+.appointment-form {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem; /* Increased space between columns */
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem; /* Add margin below each form group */
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 0.75rem; /* Increased padding for a better look */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem; /* Increased padding for the button */
+    border-radius: 4px;
+    cursor: pointer;
+    grid-column: span 3; /* Make the button span all columns */
+    margin-top: 1rem; /* Space above the button */
+  }
+  
+  .btn:hover {
+    background-color: #0056b3;
+  }
+  
+  textarea.form-control {
+    resize: vertical; /* Allow vertical resizing */
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 1rem;
+  }
+.hidden{
+    display: none;
+}  
