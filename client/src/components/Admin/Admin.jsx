@@ -9,6 +9,7 @@ function Admin() {
     const [role, setRole] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const [showForm, setShowForm] = useState(false);
+    const [showTable, setShowTable] = useState(false);
     const [editUserId, setEditUserId] = useState(null);
     const [error, setError] = useState(null);
 
@@ -185,9 +186,13 @@ function Admin() {
                 </form>
             )}
 
+            
             {/* Users Table */}
-            <h2>Registered Users</h2>
-            <table className="table">
+            <button className="btn btn-success" onClick={() => setShowTable(!showTable)}>
+                {showTable ? 'Cancel' : 'View Users'}
+            </button>
+            {showTable && (
+            <table onSubmit={handleSubmit} className="table">
                 <thead>
                     <tr>
                         <th>#</th>
@@ -210,6 +215,7 @@ function Admin() {
                     ))}
                 </tbody>
             </table>
+            )}
         </div>
     );
 }

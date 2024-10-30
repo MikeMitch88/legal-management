@@ -1,37 +1,142 @@
-
-
-import { Button, Space } from 'antd';
-import './App.css'
-import AppHeader from './components/AppHeader'
-import SideMenu from './components/SideMenu'
-import PageContent from './components/PageContent'
-import AppFooter from './components/AppFooter'
-import AppRoutes from './components/Routes/AppRoutes';
-// import { BrowserRouter } from 'react-router-dom';
-// import { AuthProvider } from './components/AuthContext/AuthContext';
+import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import { Space } from 'antd';
+import './App.css';
+import AppHeader from './components/AppHeader';
+import SideMenu from './components/SideMenu';
+import PageContent from './components/PageContent';
+import AppFooter from './components/AppFooter';
 
 function App() {
-
   return (
-    
-    
-    <div className='App' >
-     <AppHeader />
-     <Space className='SideMenuAndPageContent' >
-    <SideMenu />
-    <PageContent />
-    {/* <AppRoutes /> */}
-      </Space> 
-      <AppFooter /> 
-    </div> 
-   
-   
-  
+    <BrowserRouter>
+      <div className='App'>
+        <AppHeader />
+        <Space className='SideMenuAndPageContent'>
+          <SideMenu />
+          <PageContent />
+        </Space>
+        <AppFooter />
+      </div>
+    </BrowserRouter>
   );
 }
 
-export default App
+export default App;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import { Button, Space } from 'antd';
+// import './App.css'
+// import AppHeader from './components/AppHeader'
+// import SideMenu from './components/SideMenu'
+// import PageContent from './components/PageContent'
+// import AppFooter from './components/AppFooter'
+// import AppRoutes from './components/Routes/AppRoutes';
+// // import { BrowserRouter } from 'react-router-dom';
+// // import { AuthProvider } from './components/AuthContext/AuthContext';
+
+// function App() {
+
+//   return (
+    
+    
+//     <div className='App' >
+//      <AppHeader />
+//      <Space className='SideMenuAndPageContent' >
+//     <SideMenu />
+//     <PageContent />
+//     {/* <AppRoutes /> */}
+//       </Space> 
+//       <AppFooter /> 
+//     </div> 
+   
+   
+  
+//   );
+// }
+
+// export default App  
 
 
 
