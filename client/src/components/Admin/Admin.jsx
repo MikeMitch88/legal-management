@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Admin.css'; // Import your CSS file for styling
 
+
 function Admin() {
     const [users, setUsers] = useState([]);
     const [email, setEmail] = useState('');
@@ -216,8 +217,10 @@ function Admin() {
                 </tbody>
             </table>
             )}
+           
         </div>
+        
     );
-}
+} 
 
 export default Admin;

@@ -7,6 +7,8 @@ import SideMenu from './components/SideMenu';
 import PageContent from './components/PageContent';
 import AppFooter from './components/AppFooter';
 
+
+
 function App() {
   return (
     <BrowserRouter>

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Dashboard from '../../Pages/Dashboard';
 import Client from '../../Pages/Client';
@@ -13,34 +14,159 @@ import Psychology from '../CaseManagement/Psychology';
 import Admin from '../Admin/Admin';
 import Protected from '../AuthContext/Protected';
 import Unauthorized from '../AuthContext/Unauthorized';
+import LogoutButton from '../Auth/Logout';
 
-const AppRoutes = () => (
-  <Routes>
-    <Route path='/login' element={<Login />} />
-    <Route
-      path='/'
-      element={
-        <Protected roles={['admin', 'role']}>
-          <Dashboard />
-        </Protected>
-      }
-    />
-    <Route path='client' element={<Protected roles={['admin', 'role']}><Client /></Protected>} />
-    <Route path='case' element={<Protected roles={['admin', 'role']}><Case /></Protected>} />
-    <Route path='task' element={<Protected roles={['admin', 'role']}><Task /></Protected>} />
-    <Route path='appointment' element={<Protected roles={['admin', 'role']}><Appointment /></Protected>} />
-    <Route path='teammembers' element={<Protected roles={['admin', 'role']}><TeamMembers /></Protected>} />
-    <Route path='setting' element={<Protected roles={['admin', 'role']}><Setting /></Protected>} />
-    <Route path='reception' element={<Protected roles={['reception']}><ClientDetails /></Protected>} />
-    <Route path='legal' element={<Protected roles={['legal']}><ClientDetailsForm /></Protected>} />
-    <Route path='psychology' element={<Protected roles={['psychology']}><Psychology /></Protected>} />
-    <Route path='admin' element={<Protected roles={['admin']}><Admin /></Protected>} />
-    <Route path='unauthorized' element={<Unauthorized />} />
-    <Route path='*' element={<Navigate to='/login' />} />
-  </Routes>
-);
+const AppRoutes = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token'));
+
+  const handleLogin = () => {
+    setIsLoggedIn(true); // Update login state when user logs in  src/components/Auth/Logout.jsx
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    setIsLoggedIn(false); // Update login state when user logs out
+  };
+
+  return (
+    <>
+      {/* Show LogoutButton only if logged in */}
+      {isLoggedIn && <LogoutButton onLogout={handleLogout} />}
+
+      <Routes>
+        <Route path='/login' element={<Login onLogin={handleLogin} />} />
+        <Route
+          path='/'
+          element={
+            <Protected roles={['admin', 'role']}>
+              <Dashboard />
+            </Protected>
+          }
+        />
+        <Route path='client' element={<Protected roles={['admin', 'role']}><Client /></Protected>} />
+        <Route path='case' element={<Protected roles={['admin', 'role']}><Case /></Protected>} />
+        <Route path='task' element={<Protected roles={['admin', 'role']}><Task /></Protected>} />
+        <Route path='appointment' element={<Protected roles={['admin', 'role']}><Appointment /></Protected>} />
+        <Route path='teammembers' element={<Protected roles={['admin', 'role']}><TeamMembers /></Protected>} />
+        <Route path='setting' element={<Protected roles={['admin', 'role']}><Setting /></Protected>} />
+        <Route path='reception' element={<Protected roles={['reception']}><ClientDetails /></Protected>} />
+        <Route path='legal' element={<Protected roles={['legal']}><ClientDetailsForm /></Protected>} />
+        <Route path='psychology' element={<Protected roles={['psychology']}><Psychology /></Protected>} />
+        <Route path='admin' element={<Protected roles={['admin']}><Admin /></Protected>} />
+        <Route path='unauthorized' element={<Unauthorized />} />
+        <Route path='*' element={<Navigate to='/login' />} />
+      </Routes>
+    </>
+  );
+};
 
 export default AppRoutes;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import { Routes, Route, Navigate } from 'react-router-dom';
+// import Dashboard from '../../Pages/Dashboard';
+// import Client from '../../Pages/Client';
+// import Case from '../../Pages/Case';
+// import Task from '../../Pages/Task';
+// import Appointment from '../../Pages/Appointment';
+// import TeamMembers from '../../Pages/TeamMembers';
+// import Setting from '../../Pages/Setting';
+// import Login from '../Auth/Login';
+// import ClientDetails from '../ClientManagement/Reception';
+// import ClientDetailsForm from '../CaseManagement/Legal';
+// import Psychology from '../CaseManagement/Psychology';
+// import Admin from '../Admin/Admin';
+// import Protected from '../AuthContext/Protected';
+// import Unauthorized from '../AuthContext/Unauthorized';
+
+// const AppRoutes = () => (
+//   <Routes>
+//     <Route path='/login' element={<Login />} />
+//     <Route
+//       path='/'
+//       element={
+//         <Protected roles={['admin', 'role']}>
+//           <Dashboard />
+//         </Protected>
+//       }
+//     />
+//     <Route path='client' element={<Protected roles={['admin', 'role']}><Client /></Protected>} />
+//     <Route path='case' element={<Protected roles={['admin', 'role']}><Case /></Protected>} />
+//     <Route path='task' element={<Protected roles={['admin', 'role']}><Task /></Protected>} />
+//     <Route path='appointment' element={<Protected roles={['admin', 'role']}><Appointment /></Protected>} />
+//     <Route path='teammembers' element={<Protected roles={['admin', 'role']}><TeamMembers /></Protected>} />
+//     <Route path='setting' element={<Protected roles={['admin', 'role']}><Setting /></Protected>} />
+//     <Route path='reception' element={<Protected roles={['reception']}><ClientDetails /></Protected>} />
+//     <Route path='legal' element={<Protected roles={['legal']}><ClientDetailsForm /></Protected>} />
+//     <Route path='psychology' element={<Protected roles={['psychology']}><Psychology /></Protected>} />
+//     <Route path='admin' element={<Protected roles={['admin']}><Admin /></Protected>} />
+//     <Route path='unauthorized' element={<Unauthorized />} />
+//     <Route path='*' element={<Navigate to='/login' />} />
+//   </Routes>
+// );
+
+// export default AppRoutes;
 
 
 

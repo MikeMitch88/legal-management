@@ -20,10 +20,10 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    margin-top: 100px;
+    margin-top: 20px;
     background-color: azure;
-    height: 60vh;
     border-radius: 5px;
+    margin-bottom: 10px;
    
 }
 
@@ -66,9 +66,9 @@ formss {
     /* height: auto; */
     justify-content: center;
     position: absolute;
-    margin-left:10%;
+    margin-left:14%;
     /* transform: translateX(-50%); */
-    top: 16%;
+    top: 9%;
     
 
 
