@@ -6,8 +6,8 @@ import os
 from flask import Blueprint, request, jsonify, send_from_directory
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from werkzeug.utils import secure_filename
-from ..models import db, Document, Case
-from ..utils import (
+from models import db, Document, Case
+from utils import (
     validate_file_upload,
     generate_filename,
     allowed_file,

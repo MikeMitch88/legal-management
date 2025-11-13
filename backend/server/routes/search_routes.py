@@ -6,8 +6,8 @@ from flask import Blueprint, request, jsonify
 from flask_jwt_extended import jwt_required
 from sqlalchemy import func, or_, and_
 from datetime import datetime, timedelta
-from ..models import db, Case, Client, User, CaseActivity
-from ..utils import (
+from models import db, Case, Client, User, CaseActivity
+from utils import (
     handle_errors,
     create_response,
     paginate_query,
@@ -136,10 +136,14 @@ def get_statistics():
         for name, email, count in cases_by_user
     ]
 
-    # Recent activity
-    recent_activities = CaseActivity.query.order_by(
-        CaseActivity.created_at.desc()
-    ).limit(10).all()
+    # Recent activity (if CaseActivity model exists)
+    try:
+        recent_activities = CaseActivity.query.order_by(
+            CaseActivity.created_at.desc()
+        ).limit(10).all()
+        recent_activities_data = [activity.to_dict() for activity in recent_activities]
+    except:
+        recent_activities_data = []
 
     statistics = {
         'totals': {
@@ -153,7 +157,7 @@ def get_statistics():
         'cases_by_priority': priority_counts,
         'cases_by_category': category_counts,
         'user_workload': user_workload,
-        'recent_activities': [activity.to_dict() for activity in recent_activities],
+        'recent_activities': recent_activities_data,
     }
 
     return create_response(data=statistics)

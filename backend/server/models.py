@@ -184,7 +184,7 @@ class CaseActivity(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     activity_type = db.Column(db.String(50), nullable=False)  # created, updated, status_changed, comment, etc.
     description = db.Column(db.Text, nullable=False)
-    metadata = db.Column(db.Text)  # JSON string for additional data
+    extra_data = db.Column(db.Text)  # JSON string for additional data
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
     # Relationships
@@ -199,7 +199,7 @@ class CaseActivity(db.Model):
             'user_name': self.user.full_name if self.user else None,
             'activity_type': self.activity_type,
             'description': self.description,
-            'metadata': self.metadata,
+            'extra_data': self.extra_data,
             'created_at': self.created_at.isoformat() if self.created_at else None,
         }
 
